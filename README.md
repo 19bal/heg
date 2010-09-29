@@ -20,4 +20,4 @@ Seminer çalışması yol haritası burada
 
 ## Sanal El
 
-- [vhand](http://github.com/19bal/vhand) çalışması
+- [vhand](http://github.com/19bal/vhand) çalışmasıı
