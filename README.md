@@ -10,6 +10,14 @@ Seminer çalışması yol haritası burada
 
 - Elhızının çıkarılması çalışması: markerlı, bulaşık eldiveni, acceglove
 
+## Gait Analysis/Recognition/...
+
+- GaTech, MIT feature extraction
+- HumanID
+- EU FP6 projesi
+- Rum kesimindeki hocanın sunumu
+- eigenwalker
+
 ## Sanal El
 
 - [vhand](http://github.com/19bal/vhand) çalışması
