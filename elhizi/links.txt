@@ -1,0 +1,7 @@
+1. El şeklinden cinsiyet 
+
+"Gender Classification from Hand Shape", 2008
+
+2. Gesture Recognition
+
+http://www-users.cs.umn.edu/~voyles/research.gesture.demos.html
