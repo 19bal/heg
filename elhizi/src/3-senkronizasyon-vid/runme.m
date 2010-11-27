@@ -50,3 +50,14 @@ figure(2),
 plot(fi, mse_f(fi)),        grid on;
 xlabel('Frame indisi'),     ylabel('J-Amac islevi');
 title('Baslangic aninin bulunmasi');
+
+% 
+[mx,ind] = max(mse_f);
+x=(ind-5):(ind+5); y = mse_f(x);
+p = polyfit(x,y, 2);
+
+xx = min(x):0.01:max(x);
+yy = polyval(p, xx);
+plot(xx,yy);
+[mx,ind]=max(yy);
+baslangic_ani = round(xx(ind))
