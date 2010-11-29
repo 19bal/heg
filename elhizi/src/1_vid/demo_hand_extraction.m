@@ -8,9 +8,9 @@ shwRect = false;
 shwHnd = true;
 shwHndHSV = false;
 
-dbnm = strcat(DB_ROOT(), 'emg/1hand_extraction/')
-% dbnm = 'db\';
-DIR = dir(strcat(dbnm, '*.jpg'));
+% dbnm = strcat(DB_ROOT(), 'emg/1hand_extraction/')
+dbnm = '../../../../db/';
+DIR = dir(strcat(dbnm, '*.png'));
 sz =length(DIR);
 nm = ['H', 'S', 'V'];
 

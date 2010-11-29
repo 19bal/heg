@@ -1,7 +1,8 @@
 % El Hizi Cikarimi
 clear all;  close all;  clc;
 dbg = true;
-dbnm = dos2lin(strcat(DB_ROOT(), 'emg/hiz/db/'));
+% dbnm = dos2lin(strcat(DB_ROOT(), 'emg/hiz/db/'));
+dbnm = '../../../../db/';
 % dbnm = 'db/EMG_el_Hizi/dbAVI/';
 % cdir = pwd;
 % cd(dbnm);
