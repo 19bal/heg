@@ -10,6 +10,7 @@ dbg = true;
 
 dbnm = pathos('_db/orj/');          % bu dizine db resimlerini koy!
 dbnm_sel = pathos('_db/sel/');      mkdir(dbnm_sel);
+dbnm_bw = pathos('_db/bw/');        mkdir(dbnm_bw);
 
 if length(dir(dbnm_sel)) == 2
     DIR = dir(strcat(dbnm, '*.png'));
@@ -17,37 +18,31 @@ if length(dir(dbnm_sel)) == 2
     sel_frame(DIR, dbnm, dbnm_sel, ts, te, dbg);
 end
 
-sc = 0.25; % %25 scale
-T = 50;
-dip_initialise('silent');
+if length(dir(dbnm_bw)) == 2
+    fr2bw(dbnm_sel, dbnm_bw, 0.25, 50, true);
+end
 
-DIR = dir(strcat(dbnm_sel, '*.png'));
-sz  = length(DIR);
+DIR = dir(strcat(dbnm, '*.png'));
+DIR_bw = dir(strcat(dbnm_bw, '*.png'));
+sz  = length(DIR_bw);
 
 for f=1:sz
-    imgnm = DIR(f).name;    
-    fr = imread(strcat(dbnm_sel, imgnm));
+    if dbg,
+        fprintf('%04d/%04d. frame isleniyor...\n', f,sz);
+    end
     
-    % preprocess    
-    fr = preprocess(fr, sc);
-    
-    % maske
-    bw = (rgb2gray(fr) < T);
-    a = dip_image(bw);
-    a = bopening(a,5,-1,0);    
-    maske = boolean(a);
+    imgnm = DIR_bw(f).name;    
+    bw = imread(strcat(dbnm_bw, imgnm));
+    fr = imread(strcat(dbnm, imgnm));
 
-    maske = imresize(maske, 1/sc);
-    fr    = imresize(fr, 1/sc);
-    
     % extract marker
 
     % compute alpha
-    
+
     if dbg
         figure(1);  
         subplot(121);   imshow(fr)
-        subplot(122);   imshow(maske)
+        subplot(122);   imshow(bw)
         drawnow;
     end
 end
