@@ -17,17 +17,37 @@ if length(dir(dbnm_sel)) == 2
     sel_frame(DIR, dbnm, dbnm_sel, ts, te, dbg);
 end
 
+sc = 0.25; % %25 scale
+T = 50;
+dip_initialise('silent');
+
 DIR = dir(strcat(dbnm_sel, '*.png'));
 sz  = length(DIR);
+
 for f=1:sz
     imgnm = DIR(f).name;    
     fr = imread(strcat(dbnm_sel, imgnm));
     
+    % preprocess    
+    fr = preprocess(fr, sc);
+    
+    % maske
+    bw = (rgb2gray(fr) < T);
+    a = dip_image(bw);
+    a = bopening(a,5,-1,0);    
+    maske = boolean(a);
+
+    maske = imresize(maske, 1/sc);
+    fr    = imresize(fr, 1/sc);
+    
     % extract marker
+
     % compute alpha
     
     if dbg
-        figure(1);  imshow(fr)
+        figure(1);  
+        subplot(121);   imshow(fr)
+        subplot(122);   imshow(maske)
         drawnow;
     end
 end
