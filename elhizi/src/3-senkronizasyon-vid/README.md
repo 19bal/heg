@@ -17,3 +17,9 @@ bitiş/son anı (frame numarası 683-684 bölgesinden),
 maksimize etmeye çalıştığımız amaç işlevimiz,
 
 ![amaç işlevi](https://github.com/19bal/heg/raw/master/elhizi/img/amac_islevi_son.jpg)
+
+## frame den bw a geçiş
+
+ilkin sonuçlar
+
+![bw](https://github.com/19bal/heg/raw/master/elhizi/img/bw.gif)
