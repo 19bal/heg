@@ -15,13 +15,7 @@ DIR = dir(strcat(dbnm, '*.png'));
 
 [ts, te] = extract_extreme_time(DIR, dbnm, dbg);
 
-for f=ts:te
-    imgnm = DIR(f).name;    
-    fr = imread(strcat(dbnm, imgnm));
-    
-    imwrite(fr, strcat(dbnm_sel, imgnm)));
-    if dbg
-        figure(1);  imshow(fr)
-        drawnow;
-    end
+if length(dir(dbnm_sel)) == 2
+    sel_frame(DIR, dbnm, dbnm_sel, ts, te, dbg);
 end
+
