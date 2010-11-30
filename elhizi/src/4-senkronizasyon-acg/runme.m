@@ -8,56 +8,26 @@ addpath(LIB_PATH,'-end');                                                 %
 
 dbg = true;
 
-dbnm = pathos('_db/orj/');
+dbnm = pathos('_db/');
 
-DIR = dir(strcat(dbnm, '*.png'));
+DIR = dir(strcat(dbnm, '*.acg'));
 sz = length(DIR);
 
-fr_p = -1;             % previous frame
-fi = 210:270;
-for f = fi,
-    fprintf('kare %04d/%04d isleniyor ...\n', f, sz);
+for f = 1:sz,
+    fprintf('acg %04d/%04d isleniyor ...\n', f, sz);
 
-    imgnm = DIR(f).name;    
-    fr = imread(strcat(dbnm, imgnm));
-
-    fr = rgb2gray(fr);
-    fr = imresize(fr, [128 NaN]);
-    fr = medfilt2(fr, [3 3]);
-%     fr = imadjust(fr);
-    %fr = edge(fr, 'canny', [], 4);
-
-    if fr_p == -1
-        fr_p = fr;
-        continue;
-    end
+    ffnm = strcat(dbnm, DIR(f).name);
     
-    fark = uint8(abs(double(fr) - double(fr_p)));  
-    
-    mse_f(f) = mean(fark(:).^2);
+    [acg] = extract_acg(ffnm, dbg);
+    alpha = compute_alpha(acg);
     
     if dbg
-        figure(1);            
-            subplot(221),   imshow(fr_p),       title('onceki');
-            subplot(222),   imshow(fr),         title('simdiki');
-            subplot(223),   imshow(fark),       title('fark');
-        drawnow;
-    end    
-    fr_p = fr;
+        figure(1),   plot(acg.samples, [(acg.palm.X - 200),  (acg.palm.Y),   (acg.palm.Z + 200)]);    
+                            title('palm');      legend('X','Y','Z');
+        figure(2),   plot(acg.samples, [(acg.thumb.X - 200), (acg.thumb.Y), (acg.thumb.Z + 200)]);    
+                            title('thumb');     legend('X','Y','Z');
+        figure(3),   plot(acg.samples, [(acg.index.X - 200), (acg.index.Y), (acg.index.Z + 200)]);    
+                            title('index');     legend('X','Y','Z');
+        figure(4),   plot(acg.samples, alpha, 'r');  title('Alpha (degree/sample)');        
+    end
 end
-
-figure(2),  
-plot(fi, mse_f(fi)),        grid on;
-xlabel('Frame indisi'),     ylabel('J-Amac islevi');
-title('Baslangic aninin bulunmasi');
-
-% 
-[mx,ind] = max(mse_f);
-x=(ind-5):(ind+5); y = mse_f(x);
-p = polyfit(x,y, 2);
-
-xx = min(x):0.01:max(x);
-yy = polyval(p, xx);
-plot(xx,yy);
-[mx,ind]=max(yy);
-baslangic_ani = round(xx(ind))
