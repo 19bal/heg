@@ -6,16 +6,14 @@ LIB_PATH = sprintf('..%s..%s..%slib%s', filesep,filesep,filesep,filesep);       
 addpath(LIB_PATH,'-end');                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-dbg = false;
+dbg = true;
 
 dbnm = pathos('_db/orj/');          % bu dizine db resimlerini koy!
 dbnm_sel = pathos('_db/sel/');      mkdir(dbnm_sel);
 
-DIR = dir(strcat(dbnm, '*.png'));
-
-[ts, te] = extract_extreme_time(DIR, dbnm, dbg);
-
 if length(dir(dbnm_sel)) == 2
+    DIR = dir(strcat(dbnm, '*.png'));
+    [ts, te] = extract_extreme_time(DIR, dbnm, dbg);
     sel_frame(DIR, dbnm, dbnm_sel, ts, te, dbg);
 end
 
