@@ -6,58 +6,30 @@ LIB_PATH = sprintf('..%s..%s..%slib%s', filesep,filesep,filesep,filesep);       
 addpath(LIB_PATH,'-end');                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-dbg = true;
+dbg = false;
 
-dbnm = pathos('_db/orj/');
+dbnm = pathos('_db/orj/');          % bu dizine db resimlerini koy!
+dbnm_sel = pathos('_db/sel/');      mkdir(dbnm_sel);
 
 DIR = dir(strcat(dbnm, '*.png'));
-sz = length(DIR);
 
-fr_p = -1;             % previous frame
-fi = 210:270;
-for f = fi,
-    fprintf('kare %04d/%04d isleniyor ...\n', f, sz);
+[ts, te] = extract_extreme_time(DIR, dbnm, dbg);
 
-    imgnm = DIR(f).name;    
-    fr = imread(strcat(dbnm, imgnm));
-
-    fr = rgb2gray(fr);
-    fr = imresize(fr, [128 NaN]);
-    fr = medfilt2(fr, [3 3]);
-%     fr = imadjust(fr);
-    %fr = edge(fr, 'canny', [], 4);
-
-    if fr_p == -1
-        fr_p = fr;
-        continue;
-    end
-    
-    fark = uint8(abs(double(fr) - double(fr_p)));  
-    
-    mse_f(f) = mean(fark(:).^2);
-    
-    if dbg
-        figure(1);            
-            subplot(221),   imshow(fr_p),       title('onceki');
-            subplot(222),   imshow(fr),         title('simdiki');
-            subplot(223),   imshow(fark),       title('fark');
-        drawnow;
-    end    
-    fr_p = fr;
+if length(dir(dbnm_sel)) == 2
+    sel_frame(DIR, dbnm, dbnm_sel, ts, te, dbg);
 end
 
-figure(2),  
-plot(fi, mse_f(fi)),        grid on;
-xlabel('Frame indisi'),     ylabel('J-Amac islevi');
-title('Baslangic aninin bulunmasi');
-
-% 
-[mx,ind] = max(mse_f);
-x=(ind-5):(ind+5); y = mse_f(x);
-p = polyfit(x,y, 2);
-
-xx = min(x):0.01:max(x);
-yy = polyval(p, xx);
-plot(xx,yy);
-[mx,ind]=max(yy);
-baslangic_ani = round(xx(ind))
+DIR = dir(strcat(dbnm_sel, '*.png'));
+sz  = length(DIR);
+for f=1:sz
+    imgnm = DIR(f).name;    
+    fr = imread(strcat(dbnm_sel, imgnm));
+    
+    % extract marker
+    % compute alpha
+    
+    if dbg
+        figure(1);  imshow(fr)
+        drawnow;
+    end
+end
