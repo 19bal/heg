@@ -22,12 +22,19 @@ for f = 1:sz,
     alpha = compute_alpha(acg);
     
     if dbg
-        figure(1),   plot(acg.samples, [(acg.palm.X - 200),  (acg.palm.Y),   (acg.palm.Z + 200)]);    
+        figure(1),   plot(acg.samples, acg.palm.X, 'r', ...
+                          acg.samples, acg.palm.Y, 'g', ...
+                          acg.samples, acg.palm.Z, 'b');
                             title('palm');      legend('X','Y','Z');
-        figure(2),   plot(acg.samples, [(acg.thumb.X - 200), (acg.thumb.Y), (acg.thumb.Z + 200)]);    
+        figure(2),   plot(acg.samples, acg.thumb.X, 'r', ...
+                          acg.samples, acg.thumb.Y, 'g', ...
+                          acg.samples, acg.thumb.Z, 'b');                            
                             title('thumb');     legend('X','Y','Z');
-        figure(3),   plot(acg.samples, [(acg.index.X - 200), (acg.index.Y), (acg.index.Z + 200)]);    
+        figure(3),   plot(acg.samples, acg.index.X, 'r', ...
+                          acg.samples, acg.index.Y, 'g', ...
+                          acg.samples, acg.index.Z, 'b');                            
                             title('index');     legend('X','Y','Z');
+                            
         figure(4),   plot(acg.samples, alpha, 'r');  title('Alpha (degree/sample)');        
     end
 end

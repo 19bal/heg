@@ -26,7 +26,7 @@ DIR = dir(strcat(dbnm, '*.png'));
 DIR_marker = dir(strcat(dbnm_marker, '*.png'));
 sz  = length(DIR);
 
-for f=297:297%1:sz
+for f=1:sz
     if dbg,
         fprintf('%04d/%04d. frame isleniyor...\n', f,sz);
     end
