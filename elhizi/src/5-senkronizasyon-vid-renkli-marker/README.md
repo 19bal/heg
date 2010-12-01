@@ -2,19 +2,21 @@ ACG-VID-EMG eş zamanlama çalışmasının video ayağı-renkli marker kullanı
 
 ## null
 
-kullanılan database,
+Bu çalışmada kullanılan databaseden bir kare,
 
 ![db](https://github.com/19bal/heg/raw/master/elhizi/img/db_marker_renkli.jpg)
 
-bw karşılığı
+bu karenin önişlenmesinin ardından el bölgesinin çıkarılmasıyla elde edilen siyah-beyaz görüntü,
 
 ![bw](https://github.com/19bal/heg/raw/master/elhizi/img/db_marker_renkli_bw.jpg)
 
-elde edilen noktalar
+siyah-beyaz görüntü üzerinde markerları ele veren özelliklerin görüntü işlemeyle sınanmasıyla filtrelenerek 
+elde edilen noktalara ait siyah-beyaz görüntü,
 
 ![points](https://github.com/19bal/heg/raw/master/elhizi/img/db_marker_renkli_points.jpg)
 
-bu noktaların sayısal karşılıkları (resmimiz `480x640` boyutlarında),
+bu noktaları ve maske altındaki görüntünün renk değerleri de dikkate alınarak hangi parmak olduğu
+bilgisiyle birlikte marker koordinatları (resmimiz `480x640` boyutlarında),
 
 		hand = 
 
@@ -22,6 +24,6 @@ bu noktaların sayısal karşılıkları (resmimiz `480x640` boyutlarında),
 			 palm: [428.5948 281.7756]
 			thumb: [267.9629 338.9237]
 
-açının değişimine dair ilkin sonuçlar,
+markerlar bulunduktan sonrası açının hesabı. bu test ardışıllığı için elde ettiğimiz açının değişimine dair ilkin sonuçlar,
 
 ![alpha](https://github.com/19bal/heg/raw/master/elhizi/img/renkli_marker_alpha.jpg)
