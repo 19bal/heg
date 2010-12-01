@@ -26,7 +26,7 @@ DIR = dir(strcat(dbnm, '*.png'));
 DIR_marker = dir(strcat(dbnm_marker, '*.png'));
 sz  = length(DIR);
 
-for f=1:sz
+for f=297:297%1:sz
     if dbg,
         fprintf('%04d/%04d. frame isleniyor...\n', f,sz);
     end
@@ -35,17 +35,23 @@ for f=1:sz
     fr = imadjustRGB(imread(strcat(dbnm, imgnm)));
     bw_m = imread(strcat(dbnm_marker, imgnm));    
     
-    markers = marker_assign(fr, bw_m, dbg);
+    hand = marker_assign(fr, bw_m, dbg);
+    alpha(f) = compute_alpha(hand);
     
-    if dbg
+    if ~dbg
         figure(1);  
         subplot(121);   imshow(fr)
         subplot(122);   imshow(1 - bw_m)
         hold on;
-        plot(markers.index(1), markers.index(2), '*g')
-        plot(markers.palm(1),  markers.palm(2),  '*r')
-        plot(markers.thumb(1), markers.thumb(2), '*y')
+        plot(hand.index(1), hand.index(2), '*g')
+        plot(hand.palm(1),  hand.palm(2),  '*r')
+        plot(hand.thumb(1), hand.thumb(2), '*y')
         hold off;        
         drawnow;
     end    
+end
+
+if dbg
+    figure(2)
+    plot(alpha);
 end
