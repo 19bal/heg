@@ -1,4 +1,4 @@
-% video: baslangic ani
+% video: baslangic ani - renkli marker
 clear all;  close all;  clc;
 
 %%%%%%%%%%%%%%%% D O   N O T   E D I T   M E %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
