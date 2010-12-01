@@ -20,6 +20,14 @@ maksimize etmeye çalıştığımız amaç işlevimiz,
 
 ## frame den bw a geçiş
 
-ilkin sonuçlar
+bu çalışmada kullanılan database
+
+![db](https://github.com/19bal/heg/raw/master/elhizi/img/db_marker.jpg)
+
+resimden bw a geçiş
+
+![bw](https://github.com/19bal/heg/raw/master/elhizi/img/db_marker_bw.jpg)
+
+gif hali
 
 ![bw](https://github.com/19bal/heg/raw/master/elhizi/img/bw.gif)
