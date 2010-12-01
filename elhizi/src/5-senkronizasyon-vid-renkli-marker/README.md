@@ -24,6 +24,10 @@ bilgisiyle birlikte marker koordinatları (resmimiz `480x640` boyutlarında),
 			 palm: [428.5948 281.7756]
 			thumb: [267.9629 338.9237]
 
+tüm video ardışıllığı için bulunan markerlar,
+
+![markers](https://github.com/19bal/heg/raw/master/elhizi/img/db_marker_renkli_markers.gif)
+
 markerlar bulunduktan sonrası açının hesabı. bu test ardışıllığı için elde ettiğimiz açının değişimine dair ilkin sonuçlar,
 
 ![alpha](https://github.com/19bal/heg/raw/master/elhizi/img/renkli_marker_alpha.jpg)
