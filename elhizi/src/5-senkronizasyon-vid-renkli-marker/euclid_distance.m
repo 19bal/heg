@@ -23,5 +23,9 @@ if isstruct(A)
         h = sqrt(deltaX.^2 + deltaY.^2);
     end
 else % array
-    h = sqrt(sum((A - B).^2));
+    if size(A, 1) > 1 && size(B, 1) == 1
+        B = repmat(B, [size(A,1) 1]);
+    end
+        
+    h = sqrt(sum((A' - B').^2));
 end
