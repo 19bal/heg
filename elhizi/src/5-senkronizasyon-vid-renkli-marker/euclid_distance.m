@@ -12,12 +12,16 @@ function h = euclid_distance(A, B)
 %   B.X = 5; B.Y = 0;   B.Z = 0;
 %   hipotenus(A, B)
 
-deltaX = abs(A.X - B.X);
-deltaY = abs(A.Y - B.Y);
+if isstruct(A)
+    deltaX = abs(A.X - B.X);
+    deltaY = abs(A.Y - B.Y);
 
-if isfield(A, 'Z')
-    deltaZ = abs(A.Z - B.Z);
-    h = sqrt(deltaX.^2 + deltaY.^2 + deltaZ.^2);
-else
-    h = sqrt(deltaX.^2 + deltaY.^2);
+    if isfield(A, 'Z')
+        deltaZ = abs(A.Z - B.Z);
+        h = sqrt(deltaX.^2 + deltaY.^2 + deltaZ.^2);
+    else
+        h = sqrt(deltaX.^2 + deltaY.^2);
+    end
+else % array
+    h = sqrt(sum((A - B).^2));
 end
