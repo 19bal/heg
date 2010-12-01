@@ -15,9 +15,9 @@ function h = euclid_distance(A, B)
 deltaX = abs(A.X - B.X);
 deltaY = abs(A.Y - B.Y);
 
-if isfield(A, 'Z')
-    deltaZ = abs(A.Z - B.Z);
-    h = sqrt(deltaX.^2 + deltaY.^2 + deltaZ.^2);
-else
+% if isfield(A, 'Z')
+%     deltaZ = abs(A.Z - B.Z);
+%     h = sqrt(deltaX.^2 + deltaY.^2 + deltaZ.^2);
+% else
     h = sqrt(deltaX.^2 + deltaY.^2);
-end
+% end
