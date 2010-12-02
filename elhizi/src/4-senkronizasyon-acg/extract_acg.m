@@ -12,7 +12,7 @@ acg.samples  = data(:, 1);
 
 data = data(:, 2:size(data, 2));
 
-data = filtering(data, 5);
+data = filtering(data, 25);
 
 acg.thumb.X  = data(:, 1);
 acg.thumb.Y  = data(:, 2);

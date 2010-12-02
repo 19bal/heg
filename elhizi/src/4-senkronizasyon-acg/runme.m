@@ -38,3 +38,31 @@ for f = 1:sz,
         figure(4),   plot(acg.samples, alpha, 'r');  title('Alpha (degree/sample)');        
     end
 end
+
+% analiz: PCA
+X = [acg.index.X' acg.palm.X' acg.thumb.X'];
+Y = [acg.index.Y' acg.palm.Y' acg.thumb.Y'];
+Z = [acg.index.Z' acg.palm.Z' acg.thumb.Z'];
+
+data = [X; Y; Z];
+model = pca(data, 2);
+
+plot3(acg.index.X', acg.index.Y',   acg.index.Z',   'r*', ...
+      acg.palm.X',  acg.palm.Y',    acg.palm.Z',    'g*', ...
+      acg.thumb.X', acg.thumb.Y',   acg.thumb.Z',   'b*');
+
+  grid on;        legend('index', 'palm', 'thumb');
+  xlabel('X');    ylabel('Y');    zlabel('Z');
+
+% PCA vektorlerini ciz 
+hold on
+G = 100;    ofset = 100;
+
+v = ofset + G * model.W';
+v = [[ofset ofset ofset]; v(1,:); [ofset ofset ofset]; v(2,:)]
+
+plot3(v(1:2, 1), v(1:2, 2), v(1:2, 3), 'k', v(3:4, 1), v(3:4, 2), v(3:4, 3), 'k');
+hold off
+
+
+
