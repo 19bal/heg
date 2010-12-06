@@ -10,7 +10,7 @@ T = 50;
 
 dbg = true;
 
-dbnm = pathos('_db/orj/');              % bu dizine db resimlerini koy!
+dbnm = pathos('_db/orj/');              if ~exist(dbnm), error('Bu dizini olustur ve test resimlerini bu dizine koy!'); end
 dbnm_bw = pathos('_db/bw/');            mkdir(dbnm_bw);
 dbnm_marker = pathos('_db/marker/');    mkdir(dbnm_marker);
 
@@ -26,7 +26,7 @@ DIR = dir(strcat(dbnm, '*.png'));
 DIR_marker = dir(strcat(dbnm_marker, '*.png'));
 sz  = length(DIR);
 
-for f=1:sz
+for f=1:650%sz
     if dbg,
         fprintf('%04d/%04d. frame isleniyor...\n', f,sz);
     end
@@ -38,7 +38,7 @@ for f=1:sz
     hand = marker_assign(fr, bw_m, dbg);
     alpha(f) = compute_alpha(hand);
     
-    if ~dbg
+    if dbg
         figure(1);  
         subplot(121);   imshow(fr)
         subplot(122);   imshow(1 - bw_m)
