@@ -8,7 +8,7 @@ pat_palm  = [1 0 0];
 bw_m3 = cat(3, bw_m,bw_m,bw_m);
 fr_m = fr .* uint8(bw_m3);
 
-L = bwlabel(bw_m);
+L = bwlabel(bw_m); % bwlabel iþlevi 8 tane komþusu olana bir etiket atar.matris boyutu bw_m uzunluðundadýr.
 
 % marker assign name
 for m=1:3
