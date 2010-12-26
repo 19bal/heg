@@ -7,10 +7,18 @@ function h = euclid_distance(A, B)
 % Output:
 %   h: hesaplanan hipotenus degeri
 % 
-% Example:
+% Example 1:
 %   A.X = 0; A.Y = 0;   A.Z = 0
-%   B.X = 5; B.Y = 0;   B.Z = 0;
-%   hipotenus(A, B)
+%   B.X = 5; B.Y = 0;   B.Z = 0
+%   euclid_distance(A, B)
+% 
+% Example 2:
+%   euclid_distance([1 2], [3 4])
+% 
+% Example 3:
+%   x = [1 2; 3 4; 5 6]
+%   mn = mean(x)
+%   euclid_distance(x, mn)
 
 if isstruct(A)
     deltaX = abs(A.X - B.X);
