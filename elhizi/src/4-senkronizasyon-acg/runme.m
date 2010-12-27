@@ -39,6 +39,7 @@ for f = 1:sz,
     end
 end
 
+return
 % analiz: PCA
 X = [acg.index.X' acg.palm.X' acg.thumb.X'];
 Y = [acg.index.Y' acg.palm.Y' acg.thumb.Y'];
