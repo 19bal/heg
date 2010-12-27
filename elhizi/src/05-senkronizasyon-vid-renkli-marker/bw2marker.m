@@ -20,7 +20,7 @@ for f=650%fi
     fr = imread(strcat(dbnm, imgnm));
    
     % extract marker
-    bw2 = imerode(bw, strel('disk',20));
+    bw2 = imerode(bw, strel('disk',20)); %IM2 = imerode(IM,SE) erodes the grayscale, binary, or packed binary image IM, returning the eroded image IM2
     bw3 = cat(3, bw2,bw2,bw2);
     fr_m = fr .* uint8(bw3);
 
@@ -33,8 +33,8 @@ for f=650%fi
     td = imdilate(te, strel('square', 8));
     
     % % markerlari sec
-    L = bwlabel(td);
-    s = regionprops(L, {'centroid', 'eccentricity', 'area'});
+    L = bwlabel(td);%td komþuluðuna göre etiketleme yapar
+    s = regionprops(L, {'centroid', 'eccentricity', 'area'});%etiketlenen L matrisinin merkez, alan, eccentricity 'ini hesaplar
 
     % % % ilk
     centroid = cat(1, s.Centroid);
@@ -44,7 +44,7 @@ for f=650%fi
     % % % centroid: birbirinden cok uzak olmasin
     resim_merkezi = size(td)/2;
     ed = euclid_distance(centroid, resim_merkezi)';
-    idx = find((ed > minDist) & (ed < maxDist));
+    idx = find((ed > minDist) & (ed < maxDist)); %bu þartlarý saðlayan elemanýn matris numarasýný verir
     
     % % % eccentricity: 0 a yakin olanlar
     ii = find((eccentricity(idx) < 0.70) & ...
@@ -55,13 +55,13 @@ for f=650%fi
            
     % % % area: benzer alanlilar
     if length(idx) > 3        
-        tmp_area = area(idx);
-        [sa, ids] = sort(tmp_area);
-        fark = diff(sa);
+        tmp_area = area(idx); % alanlarý çizer    
+        [sa, ids] = sort(tmp_area); %küçükten büyüðe sýralar
+        fark = diff(sa);% sa dizisindeki komþu elemanlarýn arasýndaki farklarý hesaplar
         [t, ida] = sort(fark);
         ida = ida + 1;
 
-        ii = unique([ida(1) ida(1)-1 ida(2) ida(2)-1]);
+        ii = unique([ida(1) ida(1)-1 ida(2) ida(2)-1]); % dizi içerisineki benzer elemanlarý bir defa döndürür tekrarlananlarý döndürmez
         idx = idx(ids(ii));
     end
     
@@ -71,7 +71,7 @@ for f=650%fi
         idx = idx(1:3);
     end
     
-    bw_m = ismember(L, idx);
+    bw_m = ismember(L, idx);%idx içerisinde  L matrisinin elemanlarý varsa o elemanlarýn yerine logic 1 döndürür yoksa logic 0 döndürür
     imwrite(bw_m, strcat(dbnm_marker, imgnm));
     
     % compute alpha

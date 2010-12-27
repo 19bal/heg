@@ -10,9 +10,9 @@ T = 50;
 
 dbg = true;
 
-dbnm = pathos('_db/orj/');              if ~exist(dbnm), error('Bu dizini olustur ve test resimlerini bu dizine koy!'); end
-dbnm_bw = pathos('_db/bw/');            mkdir(dbnm_bw);
-dbnm_marker = pathos('_db/marker/');    mkdir(dbnm_marker);
+dbnm = pathos('_db\orj\');              if ~exist(dbnm), error('Bu dizini olustur ve test resimlerini bu dizine koy!'); end
+dbnm_bw = pathos('_db\bw\');            mkdir(dbnm_bw);
+dbnm_marker = pathos('_db\marker\');    mkdir(dbnm_marker);
 
 if length(dir(dbnm_bw)) == 2
     fr2bw(dbnm, dbnm_bw, sc, T, dbg);
