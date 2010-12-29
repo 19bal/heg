@@ -21,12 +21,10 @@ t = (1:Ns) / Sr;
 % 2- yoshikawa06
 y = emg(:, 1)';          % ilk kanali (acma kanali) signali
 
-FS = 64e-3 * 2 * Sr;        % yoshikawa06: 64ms secmisti fakat Sr=2000Hz
-FL = 16e-3 * 2 * Sr;        
+FS = 64e-3 * Sr;        % yoshikawa06: 64ms secmisti fakat Sr=2000Hz
+FL = 16e-3 * Sr;        
 
-w = hamming(LAG)';
-
-v = tsmovavg(y, 'w', w);
+v = tsmovavg2(y, FS, FL, dbg);
 
 if dbg
     figure(1),
@@ -38,7 +36,7 @@ if dbg
                         title('kanal 2: kapama');   
                         xlabel('t (sn)');   ylabel('A (mV)');
                         xlim([min(t) max(t)]);
-    subplot(313),   plot(t, v);
+    subplot(313),   plot(v);
                         title('IEMG');   
                         xlabel('t (sn)');   ylabel('A (mV)');
                         xlim([min(t) max(t)]);    
