@@ -21,8 +21,8 @@ t = (1:Ns) / Sr;
 % 2- yoshikawa06
 y = emg(:, 1)';          % ilk kanali (acma kanali) signali
 
-FS = 64e-3 * Sr;        % yoshikawa06: 64ms secmisti fakat Sr=2000Hz
-FL = 16e-3 * Sr;        
+FS = 0.5 * 64e-3 * Sr;        % yoshikawa06: 64ms secmisti fakat Sr=2000Hz
+FL = 0.5 * 16e-3 * Sr;        
 
 v = tsmovavg2(y, FS, FL, dbg);
 

@@ -12,11 +12,14 @@ Seminer çalışması yol haritası burada
 
 ## Gait Analysis/Recognition/...
 
+- HumanEva: database, matlab code vs: http://vision.cs.brown.edu/humaneva/download1.html
 - GaTech, MIT feature extraction
 - HumanID
 - EU FP6 projesi
-- Rum kesimindeki hocanın sunumu
+- Rum kesimindeki hocanın [sunumu](http://www.iti.gr/iti/files/document/seminars/Activity_recognition_final.pdf)
 - eigenwalker
+
+- bamberg08, "Gait Analysis Using a Shoe-Integrated Wireless Sensor System",Stacy J. Morris Bamberg,IEEE,2008
 
 ## Sanal El
 
