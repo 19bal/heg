@@ -53,6 +53,15 @@ for f=1:650%sz
     end    
 end
 
+% postprocess
+% a) NaN
+idx = find(isnan(alpha));
+alpha(idx) = alpha(idx-1);
+
+% b) 0
+idx = find(alpha==0);
+alpha(idx) = alpha(idx-1);
+
 csvwrite(fnm_bkp_alpha, alpha);
 if dbg
     figure(2)
