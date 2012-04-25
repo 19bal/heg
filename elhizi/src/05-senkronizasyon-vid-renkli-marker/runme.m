@@ -10,17 +10,14 @@ T = 50;
 
 dbg = true;
 
-<<<<<<< HEAD
-dbnm = pathos('_db\orj\');              if ~exist(dbnm), error(sprintf('"%s" dizinini olustur ve test resimlerini bu dizine koy!', dbnm)); end
-dbnm_bw = pathos('_db\bw\');            mkdir(dbnm_bw);
-dbnm_marker = pathos('_db\marker\');    mkdir(dbnm_marker);
-=======
+% dbnm = pathos('_db\orj\');              if ~exist(dbnm), error(sprintf('"%s" dizinini olustur ve test resimlerini bu dizine koy!', dbnm)); end
+% dbnm_bw = pathos('_db\bw\');            mkdir(dbnm_bw);
+% dbnm_marker = pathos('_db\marker\');    mkdir(dbnm_marker);
 dbnm = pathos('_db/orj/');              if ~exist(dbnm), error('Bu dizini olustur ve test resimlerini bu dizine koy!'); end
 dbnm_bw = pathos('_db/bw/');            mkdir(dbnm_bw);
 dbnm_marker = pathos('_db/marker/');    mkdir(dbnm_marker);
 fnm_bkp_alpha = pathos('_bkp/renkli_marker_alpha.csv');     
                                         mkdir(pathos('_bkp/'));
->>>>>>> 78d703e41fa3f225a9af270c3dfb04e9f0df8fab
 
 if length(dir(dbnm_bw)) == 2
     fr2bw(dbnm, dbnm_bw, sc, T, dbg);
@@ -71,11 +68,7 @@ alpha(idx) = alpha(idx-1);
 csvwrite(fnm_bkp_alpha, alpha);
 if dbg
     figure(2)
-<<<<<<< HEAD
-    plot(alpha);
-end
-=======
+    %plot(alpha);
     plot(alpha);    title('renkli marker - acinin degisimi');
     xlabel('zaman (ornek)');     ylabel('\alpha- aci degeri (derece)');
 end
->>>>>>> 78d703e41fa3f225a9af270c3dfb04e9f0df8fab
