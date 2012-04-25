@@ -2,7 +2,7 @@ ACG-VID-EMG eş zamanlama çalışmasının video ayağı-renkli marker kullanı
 
 ## null
 
-Bu çalışmada kullanılan databaseden [y_ns01.avi](https://github.com/19bal/heg/downloads/y_ns01.avi) den bir kare,
+Bu çalışmada kullanılan databaseden [y_ns01.avi](https://github.com/downloads/19bal/heg/y_ns01.avi) den bir kare,
 
 ![db](https://github.com/19bal/heg/raw/master/elhizi/img/db_marker_renkli.jpg)
 
