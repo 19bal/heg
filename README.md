@@ -2,6 +2,8 @@
 
 Seminer çalışması yol haritası burada
 
+- DIPimage'in kurulması gerekir.
+
 ## EMG
 
 - EMG+SVM ile ilgili çalışmalar: 3 hareket, 7 hareket

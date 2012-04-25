@@ -1,7 +1,7 @@
 function fr2bw(dbnm_sel, dbnm_bw, sc, T, dbg);
 % function fr2bw(dbnm_sel, dbnm_bw, sc, T, dbg)
-%   sc: yuzde olarak
-%   T: deger olarak
+%   sc: scale/yuzde olarak olcek degeri
+%   T: threshold/esik degeri
 
 dip_initialise('silent');
 
@@ -26,10 +26,9 @@ for f=1:sz
     maske = boolean(a);
 
     maske = imresize(maske, 1/sc);
-    fr    = imresize(fr, 1/sc);
 
-        
     if dbg
+	fr    = imresize(fr, 1/sc);
         figure(1);  
         subplot(121);   imshow(fr)
         subplot(122);   imshow(maske)

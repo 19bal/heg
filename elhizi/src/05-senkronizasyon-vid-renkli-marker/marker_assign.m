@@ -1,6 +1,7 @@
 function markers = marker_assign(fr, bw_m, dbg);
 % function markers = marker_assign(fr, bw_m, dbg);
 
+% [R G B]
 pat_index = [0 1 0];
 pat_thumb = [1 1 0];
 pat_palm  = [1 0 0];

@@ -33,7 +33,7 @@ for f=650%fi
     td = imdilate(te, strel('square', 8));
     
     % % markerlari sec
-    L = bwlabel(td);%td komþuluðuna göre etiketleme yapar
+    L = bwlabel(td);	%td komþuluðuna göre etiketleme yapar
     s = regionprops(L, {'centroid', 'eccentricity', 'area'});%etiketlenen L matrisinin merkez, alan, eccentricity 'ini hesaplar
 
     % % % ilk

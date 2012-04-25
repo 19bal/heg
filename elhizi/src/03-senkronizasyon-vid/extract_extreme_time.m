@@ -1,11 +1,18 @@
 function [ts, te] = extract_extreme_time(DIR, dbnm, dbg)
 % function [ts, te] = extract_extreme_time(DIR, dbnm, dbg)
+%  kamera onune getirilen siyah perdenin konma ve kaldirilma
+%  zamanini hesaplar.
+%
+% ts: start time
+% te: end time
 
 ts = helper(DIR, dbnm, 210:270, dbg);
 te = helper(DIR, dbnm, 670:700, dbg);
 
 % % helper
 function ext_time = helper(DIR, dbnm, fi, dbg)
+% fi: frame index
+
 sz = length(DIR);
 fr_p = -1;             % previous frame
 for f = fi,
@@ -17,8 +24,8 @@ for f = fi,
     fr = rgb2gray(fr);
     fr = imresize(fr, [128 NaN]);
     fr = medfilt2(fr, [3 3]);
-%     fr = imadjust(fr);
-    %fr = edge(fr, 'canny', [], 4);
+    % fr = imadjust(fr);
+    % fr = edge(fr, 'canny', [], 4);
 
     if fr_p == -1
         fr_p = fr;
