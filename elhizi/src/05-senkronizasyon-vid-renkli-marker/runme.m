@@ -2,7 +2,8 @@
 clear all;  close all;  clc;
 
 %%%%%%%%%%%%%%%% D O   N O T   E D I T   M E %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-LIB_PATH = sprintf('..%s..%s..%slib%s', filesep,filesep,filesep,filesep);                         %
+LIB_PATH = sprintf('..%s..%s..%slib%s', filesep,filesep,filesep,filesep); %lib path                        %
+db_PATH = sprintf('..%s..%s..%s',filesep,filesep,filesep); % database path
 addpath(LIB_PATH,'-end');                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 sc = 0.25;
@@ -13,11 +14,11 @@ dbg = true;
 % dbnm = pathos('_db\orj\');              if ~exist(dbnm), error(sprintf('"%s" dizinini olustur ve test resimlerini bu dizine koy!', dbnm)); end
 % dbnm_bw = pathos('_db\bw\');            mkdir(dbnm_bw);
 % dbnm_marker = pathos('_db\marker\');    mkdir(dbnm_marker);
-dbnm = pathos('_db/orj/');              if ~exist(dbnm), error('Bu dizini olustur ve test resimlerini bu dizine koy!'); end
-dbnm_bw = pathos('_db/bw/');            mkdir(dbnm_bw);
-dbnm_marker = pathos('_db/marker/');    mkdir(dbnm_marker);
-fnm_bkp_alpha = pathos('_bkp/renkli_marker_alpha.csv');     
-                                        mkdir(pathos('_bkp/'));
+dbnm = strcat(db_PATH,pathos('_db/orj/'));              if ~exist(dbnm); error('Bu dizini olustur ve test resimlerini bu dizine koy!'); end
+dbnm_bw = strcat(db_PATH, pathos('_db/bw/'));            mkdir(strcat(db_PATH, pathos('_db/bw/')));
+dbnm_marker = strcat(db_PATH,pathos('_db/marker/'));    mkdir(strcat(db_PATH,pathos('_db/marker/')));
+fnm_bkp_alpha =strcat(db_PATH, pathos('_bkp/renkli_marker_alpha.csv'));     
+                                        mkdir(strcat(db_PATH, pathos('_bkp/')));
 
 if length(dir(dbnm_bw)) == 2
     fr2bw(dbnm, dbnm_bw, sc, T, dbg);

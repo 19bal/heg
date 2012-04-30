@@ -10,7 +10,7 @@ DIR_bw = dir(strcat(dbnm_bw, '*.png'));
 sz  = length(DIR_bw);
 
 fi = 1:sz;
-for f=650%fi
+for f=fi
     if dbg,
         fprintf('%04d/%04d. frame isleniyor...\n', f,sz);
     end
